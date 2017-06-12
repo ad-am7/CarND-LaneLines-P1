@@ -23,9 +23,9 @@ The goals / steps of this project are the following:
 
 ### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
+My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I applied gaussian smoothing and canny edge detection to get the edges of the image. The image is then masked for the Region of Interest. A hough transformation is then undertaken to get the parameters of the lines. The lines are then group by left lines or right lines and a single line is approximated for each side 
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
+In order to draw a single line on the left and right lanes, I modified the draw_lines() function by appending the lines to a list as either Left Lines or Right Lines (based on the slope of the line). A polyfit function is then used to average out all of the accepted lines. One approximation of the left or right lines is done by drawing a straight line between the uppermost point and the intercept of the line at the images height (img_height[0]) 
 
 If you'd like to include images to show how the pipeline works, here is how to include an image: 
 
@@ -35,13 +35,15 @@ If you'd like to include images to show how the pipeline works, here is how to i
 ### 2. Identify potential shortcomings with your current pipeline
 
 
-One potential shortcoming would be what would happen when ... 
+One potential shortcoming would be what would happen when the car changes lanes, or the car drives on a more aggressive bend in the road. The masking accepts the region directly in front of the car. So any line marking, such as directional arrows in car parks, toll stations etc, may throw up odd results. 
 
-Another shortcoming could be ...
+Another shortcoming could be that the pipeline was not tested for differing light conditions.
 
 
 ### 3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
+A possible improvement would be to have the region of interest change dynamically and also not include the region directly infront of the vehicle (ie where car parking directional arrows would be).
 
-Another potential improvement could be to ...
+Another potential improvement could be to have the pipeline scan the image to estimate the overall light quality, and adjust the edge detection values to better match the overall picture.
+
+The pipeline does not currently give any consideration to the result of the previuos frame. In reality, the amount at which the left line and right line are limited. This would improve the consistancy of the results and also provide dummy lane lines if not lane lines are found in frame.
