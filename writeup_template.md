@@ -38,6 +38,8 @@ Further, The ROI masking accepts the region directly in front of the car. So any
 
 Another shortcoming could be that the pipeline was not tested for differing light conditions.
 
+A general shortcoming of the pipeline is that it is a process of filitering out unwanted results, but does not have a path to take if all the results are filtered out (it just doesnt display anything on the image). Depending on whether the hardware this code is controlling requires constants feedback or not, this may be an issue.
+
 
 ### 3. Suggest possible improvements to your pipeline
 
