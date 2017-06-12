@@ -32,7 +32,9 @@ In order to draw a single line on the left and right lanes, I modified the draw_
 ### 2. Identify potential shortcomings with your current pipeline
 
 
-One potential shortcoming would be what would happen when the car changes lanes, or the car drives on a more aggressive bend in the road. The masking accepts the region directly in front of the car. So any line marking, such as directional arrows in car parks, toll stations etc, may throw up odd results. 
+One potential shortcoming would be what would happen when the car changes lanes, or the car drives on a more aggressive bend in the road. This may not be identified by the pipeline in its current form.  
+
+Further, The ROI masking accepts the region directly in front of the car. So any line marking, such as directional arrows in car parks, toll stations etc, may throw up odd results. 
 
 Another shortcoming could be that the pipeline was not tested for differing light conditions.
 
@@ -43,4 +45,4 @@ A possible improvement would be to have the region of interest change dynamicall
 
 Another potential improvement could be to have the pipeline scan the image to estimate the overall light quality, and adjust the edge detection values to better match the overall picture.
 
-The pipeline does not currently give any consideration to the result of the previuos frame. In reality, the amount at which the left line and right line are limited. This would improve the consistancy of the results and also provide dummy lane lines if not lane lines are found in frame.
+The pipeline does not currently give any consideration to the result of the previous frame. In reality, the amount at which the left line and right line are limited. This would improve the consistancy of the results and also provide dummy lane lines if not lane lines are found in frame.
