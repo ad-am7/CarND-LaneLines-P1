@@ -27,9 +27,6 @@ My pipeline consisted of 5 steps. First, I converted the images to grayscale, th
 
 In order to draw a single line on the left and right lanes, I modified the draw_lines() function by appending the lines to a list as either Left Lines or Right Lines (based on the slope of the line). A polyfit function is then used to average out all of the accepted lines. One approximation of the left or right lines is done by drawing a straight line between the uppermost point and the intercept of the line at the images height (img_height[0]) 
 
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
-
-![alt text][image1]
 
 
 ### 2. Identify potential shortcomings with your current pipeline
